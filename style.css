@@ -1,0 +1,240 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+.container{
+    width: 800px;
+    margin: 20px auto;
+    background-color: #F3F3F3;
+    padding: 20px;
+}
+.container .game-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.container .game-header .word-type span{
+    color: red;
+}
+.container .game-body{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+.container .game-body .letters{
+    flex-basis: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+}
+.container .game-body .letters span{
+    text-transform: uppercase;
+    width: 45px;
+    height: 45px;
+    background-color: #2D9596;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.container .game-body .hangman{
+    background-color: #DDF2FD;
+    flex-basis: 50%;
+    position: relative;
+}
+.container .game-body .hangman div{
+    background-color: black;
+    position: absolute;
+    display: none;
+}
+.container .game-body .hangman .ground-column{
+    width: 45px;
+    height: 3px;
+    background-color: black;
+    bottom: 20px;
+    left: 25%;
+}
+.container .game-body .hangman .standing-column{
+    height: 200px;
+    width: 3px;
+    bottom: 20px;
+    left:calc(25% + 22px);
+}
+.container .game-body .hangman .gallows-column{
+    width: 80px;
+    height: 3px;
+    left: calc(25% + 22px);
+    top: 32px;
+}
+.container .game-body .hangman .gallows-column::before{
+    content: "";
+    width: 3px;
+    height: 30px;
+    position: absolute;
+    background-color: black;
+    right: 0;
+}
+.container .game-body .hangman .cord{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    border:dashed  3px black;
+    top: 60px;
+    left: calc(25% + 78px);
+}
+.container .game-body .hangman .character-head{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 3px solid black;
+    top: 68px;
+    left: calc(25% + 85px);
+}
+.container .game-body .hangman .character-head::before,
+.container .game-body .hangman .character-head::after{
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    border-radius: 50%;
+}
+.container .game-body .hangman .character-head::before{
+    top: 7px;
+    left: 5px;
+}
+.container .game-body .hangman .character-head::after{
+    top: 7px;
+    right: 5px;
+}
+.container .game-body .hangman .character-head span{
+    width: 16px;
+    height: 16px;
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid red;
+    border-color: black transparent transparent transparent;
+    top: 16px;
+    left: 3px;
+}
+.container .game-body .hangman .character-body{
+    width: 3px;
+    height: 80px;
+    top: 98px;
+    left: calc(25% + 99px);
+}
+.container .game-body .hangman .character-arms{
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 3px solid black;
+    border-color: transparent black black transparent;
+    transform: rotate(45deg);
+    top: 82px;
+    left: calc(25% + 78px);
+}
+.container .game-body .hangman .character-legs{
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 3px solid black;
+    border-color: black transparent transparent black;
+    transform: rotate(45deg);
+    top: 182px;
+    left: calc(25% + 78px);
+}
+.container .game-footer{
+    padding: 40px 30px 20px ;
+    margin-top: 10px;
+    background-color: white;
+}
+.container .game-footer .word{
+    display: flex;
+    justify-content: center;
+}
+.container .game-footer .word span{
+    width: 45px;
+    height: 45px;
+    background-color: #F6F1EE;
+    margin-left: 10px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+
+.winer{
+    width: 100%;
+    background-color: rgba(0, 128, 0, 0.3);
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.winer .win-popup{
+    text-transform: uppercase;
+    font-size: 60px;
+    color: green;
+    font-weight: bold;
+    background-color: white;
+    width: fit-content;
+    margin: 180px auto;
+    padding: 20px;
+}
+.loser{
+    width: 100%;
+    background-color:rgba(255, 0, 0, 0.3);
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.loser .lose-popup{
+    text-transform: uppercase;
+    font-size: 60px;
+    color: red;
+    font-weight: bold;
+    background-color: white;
+    width: fit-content;
+    margin: 180px auto;
+    padding: 20px;
+}
+
+.clicked{
+    pointer-events: none !important;
+    background-color: #ccc !important;
+}
+
+.show{
+    display: block !important;
+}
+
+.play-again{
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    width: fit-content;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40px;
+    position: absolute;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
